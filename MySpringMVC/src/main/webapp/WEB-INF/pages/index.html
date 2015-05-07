@@ -1,0 +1,34 @@
+<%@page session="true"%>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+<script type="text/javascript">
+function showDiv() {
+	var userDetails = {"id":1,"name":"Mandar NAmdas"};	
+
+		
+		$.ajax({ 
+    url: "testAjax.htm", 
+    type: 'POST', 
+    dataType: 'json', 
+    data: "{\"name\":\"hmkcode\",\"id\":2,\"addressDetails\":{\"id\":1,\"street\":\"hmkcode\"}}", 
+    contentType: 'application/json',
+    mimeType: 'application/json',
+    success: function(data) { 
+        alert(data.id + " " + data.name);
+    },
+    error:function(data,status,er) { 
+        alert("error: "+data+" status: "+status+" er:"+er);
+    }
+});
+}
+</script>
+</head>
+<body>
+HELLOOOOOOOOOOOOOOOOOOO
+<div id="myDiv" style="display: none">AJAX Request successfull....</div>
+<button name="Show Div" onclick="showDiv()">Show Div</button>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="mockito-all-1.9.5.jar"/>
+	<classpathentry kind="lib" path="junit-4.11.jar"/>
+	<classpathentry kind="lib" path="hsqldb-2.3.2.jar" sourcepath="C:/Documents and Settings/mandar.namdas/.m2/repository/org/hsqldb/hsqldb/2.3.2/hsqldb-2.3.2-sources.jar"/>
+	<classpathentry kind="lib" path="powermock-core-1.6.1.jar"/>
+	<classpathentry kind="lib" path="powermock-api-mockito-1.6.1.jar"/>
+	<classpathentry kind="lib" path="powermock-mockito-release-full-1.5-full.jar"/>
+	<classpathentry kind="lib" path="javassist-3.18.1-GA.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
