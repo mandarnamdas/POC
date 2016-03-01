@@ -1,4 +1,4 @@
-package com.nihilent.dao;
+package com.nihilent.service;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 
 import com.nihilent.common.Dao;
 import com.nihilent.common.InjectString;
+import com.nihilent.dao.ShapeOperationDAO;
 import com.nihilent.entity.Circle;
 import com.nihilent.entity.Rectangle;
+import com.nihilent.entity.Shape;
 
 @Stateless
 public class ShapeOperationService {
@@ -31,14 +33,14 @@ public class ShapeOperationService {
     String injectString;
 
     public void createShape() {
-        
+
         logger.info("The value of injected string : {}", injectString);
 
         Circle circle = new Circle();
         circle.setModifiedBy("Mandar_Circle");
         circle.setRadius(10l);
         circle.setShapeType("CIRCLE");
-        shapeOperationDAO.save(circle);
+        Long shapeId = shapeOperationDAO.save(circle).getId();
 
         Rectangle rect = new Rectangle();
         rect.setModifiedBy("Mandar_Rect");
@@ -46,6 +48,10 @@ public class ShapeOperationService {
         rect.setBreadth(10l);
         rect.setShapeType("RECT");
         shapeOperationDAO.save(rect);
+
+        Shape shape = shapeOperationDAO.findById(shapeId);
+        shape.setShapeType("CIRCLE_UPDATED");
+        shapeOperationDAO.save(shape);
     }
 
 }
