@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender
+        name="STDOUT"
+        class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>CONSOLE</marker>
+            </evaluator>
+            <onMismatch>DENY</onMismatch>
+            <onMatch>ACCEPT</onMatch>
+        </filter>
+        <encoder>
+            <Pattern>---&gt; %d{HH:mm:ss.SSS} %msg %n</Pattern>
+        </encoder>
+    </appender>
+    <appender
+        name="CONSOLE"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/var/log/dsima-core/console.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/dsima-core/console.%d{yyyy-MM-dd}.%i.log.gz
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>CONSOLE</marker>
+            </evaluator>
+            <onMismatch>DENY</onMismatch>
+            <onMatch>ACCEPT</onMatch>
+        </filter>
+        <encoder>
+            <Pattern>---&gt; %d{HH:mm:ss.SSS} %msg %n</Pattern>
+        </encoder>
+    </appender>
+    <appender
+        name="SERVER"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/var/log/dsima-core/server.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <FileNamePattern>/var/log/dsima-core/server.%d{yyyy-MM-dd}.%i.log.gz
+            </FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} - %logger{36} - %msg%n</Pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+    <appender
+        name="API"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/var/log/dsima-core/api.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/dsima-core/api.%d{yyyy-MM-dd}.%i.log.gz
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>API</marker>
+            </evaluator>
+            <onMismatch>DENY</onMismatch>
+            <onMatch>ACCEPT</onMatch>
+        </filter>
+        <encoder>
+            <Pattern>%date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} - %logger{36} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+    <appender
+        name="TRANSACTION"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/var/log/dsima-core/transaction.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/dsima-core/transaction.%d{yyyy-MM-dd}.%i.log.gz
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>TRANSACTION</marker>
+            </evaluator>
+            <onMismatch>DENY</onMismatch>
+            <onMatch>ACCEPT</onMatch>
+        </filter>
+        <encoder>
+            <Pattern>%date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} - LEVEL=%-5level - OPERATION=%logger{36},
+                TRANSACTION_ID=%X{TRANSACTION_ID}, %X{EXEC_TIME} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+    <appender
+        name="ALARM"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/var/log/dsima-core/alarm.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/dsima-core/alarm.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>ALARM</marker>
+            </evaluator>
+            <onMismatch>DENY</onMismatch>
+            <onMatch>ACCEPT</onMatch>
+        </filter>
+        <encoder>
+            <Pattern>%date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}, alarmId=%X{ALARM_ID},
+                severity=%X{SEVERITY}, applicationName="%X{APP_ID}", nodeId=%X{HOST},
+                component="%X{COMPONENT}", serviceId="%X{OPERATION}", message="%msg"%n</Pattern>
+        </encoder>
+    </appender>
+    <appender
+        name="HERD"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/var/log/dsima-core/herd.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/dsima-core/herd.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} - %logger{36} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+    <appender
+        name="ERROR"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/var/log/dsima-core/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/dsima-core/error.%d{yyyy-MM-dd}.%i.log.gz
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>WARNING</marker>
+                <marker>MAJOR</marker>
+                <marker>CRITICAL</marker>
+            </evaluator>
+            <onMismatch>DENY</onMismatch>
+            <onMatch>ACCEPT</onMatch>
+        </filter>
+        <encoder>
+            <Pattern>%date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}, LEVEL=%level, OPERATION=%logger{36},
+                TRANSACTION_ID=%X{TRANSACTION_ID}, EVENT_MSG="%msg"%n</Pattern>
+        </encoder>
+    </appender>
+    <logger
+        name="org.quartz"
+        level="WARN"/>
+    <logger
+        name="org.apache.zookeeper"
+        level="WARN"/>
+    <logger
+        name="org.apache.curator"
+        level="WARN"/>
+    <logger
+        name="ch.qos.logback"
+        level="WARN"/>
+    <logger
+        name="au.com.unico.herd"
+        level="WARN">
+        <appender-ref ref="HERD"/>
+    </logger>
+    <logger
+        name="com.unico.dsima.common.alarm"
+        additivity="false">
+        <level value="TRACE"/>
+        <appender-ref ref="ALARM"/>
+    </logger>
+    <logger
+        name="com"
+        additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="SERVER"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="TRANSACTION"/>
+        <appender-ref ref="ERROR"/>
+    </logger>
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="SERVER"/>
+    </root>
+</configuration>
