@@ -1,0 +1,239 @@
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>SpringPortletMVC</groupId>
+    <artifactId>SpringPortletMVC</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <properties>
+        <org.springframework-version>3.2.8.RELEASE</org.springframework-version>
+        <org.slf4j-version>1.7.5</org.slf4j-version>
+        <org.hibernate-version>4.3.1.Final</org.hibernate-version>
+    </properties>
+    <build>
+        <finalName>SpringPortletMVC</finalName>
+    </build>
+    <dependencies>
+	
+    	<!-- Spring -->
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-webmvc-portlet</artifactId>
+		  <version>${org.springframework-version}</version>
+		  <scope>compile</scope>
+		  <exclusions>
+		    <exclusion>
+		      <groupId>javax.servlet</groupId>
+		      <artifactId>servlet-api</artifactId>
+		    </exclusion>
+		    <exclusion>
+		      <groupId>commons-logging</groupId>
+		      <artifactId>commons-logging</artifactId>
+		    </exclusion>
+		    <exclusion>
+		      <groupId>com.sun.xml.bind</groupId>
+		      <artifactId>jaxb-impl</artifactId>
+		    </exclusion>
+		  </exclusions>
+		</dependency> 
+		
+		<!-- Hibernate -->
+<!-- 		<dependency> -->
+<!-- 		  <groupId>org.hibernate</groupId> -->
+<!-- 		  <artifactId>hibernate-validator</artifactId> -->
+<!-- 		  <version>${org.hibernate-version}</version> -->
+<!-- 		  <scope>runtime</scope> -->
+<!-- 		  <exclusions> -->
+<!-- 		    <exclusion> -->
+<!-- 		      <groupId>com.sun.xml.bind</groupId> -->
+<!-- 		      <artifactId>jaxb-impl</artifactId> -->
+<!-- 		    </exclusion> -->
+<!-- 		    <exclusion> -->
+<!-- 		      <groupId>javax.xml.bind</groupId> -->
+<!-- 		      <artifactId>jaxb-api</artifactId> -->
+<!-- 		    </exclusion> --> 
+<!-- 		  </exclusions> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-orm</artifactId> -->
+<!-- 			<version>${org.springframework-version}</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.3.2.GA</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-orm</artifactId>
+		 <version>${org.springframework-version}</version>
+		 </dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.4.0.GA</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-commons-annotations</artifactId> -->
+<!-- 			<version>3.3.0.ga</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-entitymanager</artifactId> -->
+<!-- 			<version>${org.hibernate-version}</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+		    <groupId>javassist</groupId>
+		    <artifactId>javassist</artifactId>
+		    <version>3.12.1.GA</version>
+		</dependency> 
+		
+		<dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.0.5</version>
+        </dependency>
+		            
+		
+		<!-- New Spring Additions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc-portlet</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+
+<!--         <dependency> -->
+<!--         <groupId>org.springframework.data</groupId> -->
+<!--         <artifactId>spring-data-jpa</artifactId> -->
+<!--         <version>1.5.0.RELEASE</version> -->
+<!--         <exclusions> -->
+<!--             <exclusion> -->
+<!--                 <groupId>org.hibernate.javax.persistence</groupId> -->
+<!--                 <artifactId>hibernate-jpa-2.0-api</artifactId> -->
+<!--             </exclusion> -->
+<!--         </exclusions> -->
+<!--     </dependency> -->
+    
+    
+		<!-- Misc Additions -->        
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+<!--         <dependency> -->
+<!-- 		   <groupId>org.javassist</groupId> -->
+<!-- 		   <artifactId>javassist</artifactId> -->
+<!-- 		   <version>3.18.0-GA</version> -->
+<!-- 		</dependency>   -->
+
+		<!-- JAVAX -->	
+		<dependency>
+			<groupId>javax.portlet</groupId>
+			<artifactId>portlet-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+		  <groupId>javax.validation</groupId>
+		  <artifactId>validation-api</artifactId>
+		  <version>1.0.0.GA</version>
+		</dependency>
+		<dependency>
+		  <groupId>jstl</groupId>
+		  <artifactId>jstl</artifactId>
+		  <version>1.2</version>
+		</dependency>
+		
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.mail</groupId>
+					<artifactId>mail</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+			</exclusions>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+				
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+</project>
