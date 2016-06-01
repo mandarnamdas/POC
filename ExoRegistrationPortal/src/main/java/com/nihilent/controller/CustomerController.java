@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletSession;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
@@ -62,6 +63,8 @@ public class CustomerController {
 
         logger.info("Start saveCustomer");
         custmerService.saveCustomer(customer);
+        PortletSession portletSession = actionRequest.getPortletSession();
+        portletSession.setAttribute("userName", customer.getName());
         actionResponse.setRenderParameter("action", "success");
         logger.info("Finish saveCustomer");
     }

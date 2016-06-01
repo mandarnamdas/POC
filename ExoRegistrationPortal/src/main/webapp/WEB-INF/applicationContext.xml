@@ -21,16 +21,16 @@
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property
             name="driverClassName"
-            value="com.mysql.jdbc.Driver"></property>
+            value="org.postgresql.Driver"></property>
         <property
             name="url"
-            value="jdbc:mysql://localhost:3306/myds"/>
+            value="jdbc:postgresql://127.0.0.1:5432/bitnami_exoplatform?autoReconnect=true"/>
         <property
             name="username"
-            value="root"/>
+            value="bn_exoplatform"/>
         <property
             name="password"
-            value="root"/>
+            value="nihilent123"/>
     </bean>
     <bean
         id="sessionFactory"
