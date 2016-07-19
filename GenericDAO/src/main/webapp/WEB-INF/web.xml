@@ -4,7 +4,7 @@
     <description></description>
     <display-name>TestGenericDAOServlet</display-name>
     <servlet-name>TestGenericDAOServlet</servlet-name>
-    <servlet-class>com.nihilent.servlet.TestGenericDAOServlet</servlet-class>
+    <servlet-class>com.mycompany.servlet.TestGenericDAOServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>TestGenericDAOServlet</servlet-name>
