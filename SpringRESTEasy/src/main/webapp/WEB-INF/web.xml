@@ -10,7 +10,7 @@
         </listener-class>
     </listener>
     <listener>
-        <listener-class>com.nihilent.service.MyContextLoaderListener</listener-class>
+        <listener-class>com.mycompany.service.MyContextLoaderListener</listener-class>
     </listener>
     <context-param>
         <param-name>contextConfigLocation</param-name>

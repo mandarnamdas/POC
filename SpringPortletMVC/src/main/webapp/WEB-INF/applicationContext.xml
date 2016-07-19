@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <context:annotation-config/>
-    <context:component-scan base-package="com.nihilent"/>
+    <context:component-scan base-package="com.mycompany"/>
     <bean
         id="jspViewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -84,7 +84,7 @@
         <property
             name="dataSource"
             ref="dataSource"></property>
-        <property name="packagesToScan" value="com.nihilent.entity"/>
+        <property name="packagesToScan" value="com.mycompany.entity"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
