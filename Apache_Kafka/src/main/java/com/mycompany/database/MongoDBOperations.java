@@ -1,4 +1,4 @@
-package com.nihilent.database;
+package com.mycompany.database;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
-import com.nihilent.entity.Customer;
+import com.mycompany.entity.Customer;
 
 public class MongoDBOperations implements DatabaseOperations {
 

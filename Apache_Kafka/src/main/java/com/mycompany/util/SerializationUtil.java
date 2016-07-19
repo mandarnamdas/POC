@@ -1,4 +1,4 @@
-package com.nihilent.util;
+package com.mycompany.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

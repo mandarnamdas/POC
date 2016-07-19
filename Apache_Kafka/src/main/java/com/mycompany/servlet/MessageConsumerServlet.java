@@ -1,4 +1,4 @@
-package com.nihilent.servlet;
+package com.mycompany.servlet;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.DatabaseEnum;
-import com.nihilent.consumer.MessageConsumer;
+import com.mycompany.consumer.MessageConsumer;
 
 /**
  * Servlet implementation class MessageConsumerServlet

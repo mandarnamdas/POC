@@ -1,4 +1,4 @@
-package com.nihilent.consumer;
+package com.mycompany.consumer;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -14,12 +14,12 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONObject;
 
 import com.DatabaseEnum;
-import com.nihilent.database.DatabaseOperations;
-import com.nihilent.database.MongoDBOperations;
-import com.nihilent.database.MySqlDatabaseOperations;
-import com.nihilent.database.SqlDatabaseOperations;
-import com.nihilent.entity.Customer;
-import com.nihilent.util.SerializationUtil;
+import com.mycompany.database.DatabaseOperations;
+import com.mycompany.database.MongoDBOperations;
+import com.mycompany.database.MySqlDatabaseOperations;
+import com.mycompany.database.SqlDatabaseOperations;
+import com.mycompany.entity.Customer;
+import com.mycompany.util.SerializationUtil;
 
 public class MessageConsumer implements Runnable {
 
@@ -83,7 +83,7 @@ public class MessageConsumer implements Runnable {
     private Properties getProperties() {
         Properties props = new Properties();
         props.put("bootstrap.servers", "172.16.1.51:9092");
-        props.put("group.id", "nihilent");
+        props.put("group.id", "mycompany");
         props.put("enable.auto.commit", "false");
         props.put("auto.commit.interval.ms", "1000");
         props.put("session.timeout.ms", "30000");

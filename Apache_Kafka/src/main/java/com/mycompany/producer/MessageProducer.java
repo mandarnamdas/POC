@@ -1,4 +1,4 @@
-package com.nihilent.producer;
+package com.mycompany.producer;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -11,8 +11,8 @@ import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.json.JSONObject;
 
-import com.nihilent.entity.Customer;
-import com.nihilent.util.SerializationUtil;
+import com.mycompany.entity.Customer;
+import com.mycompany.util.SerializationUtil;
 
 public class MessageProducer implements Runnable {
 

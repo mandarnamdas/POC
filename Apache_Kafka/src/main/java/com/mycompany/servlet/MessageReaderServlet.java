@@ -1,27 +1,31 @@
-package com.nihilent.servlet;
+package com.mycompany.servlet;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.nihilent.producer.MessageProducer;
+import com.DatabaseEnum;
+import com.mycompany.database.DatabaseOperations;
+import com.mycompany.database.MongoDBOperations;
+import com.mycompany.database.MySqlDatabaseOperations;
+import com.mycompany.database.SqlDatabaseOperations;
+import com.mycompany.entity.Customer;
 
 /**
  * Servlet implementation class MessageConsumerServlet
  */
-public class MessageProducerServlet extends HttpServlet {
+public class MessageReaderServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor.
      */
-    public MessageProducerServlet() {
+    public MessageReaderServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -41,26 +45,18 @@ public class MessageProducerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("In Post");
-        // reading the user input
-        Integer threadCount = Integer.parseInt(request.getParameter("threadCount"));
-        Integer messageCount = Integer.parseInt(request.getParameter("messageCount"));
-        ExecutorService producerThreads = Executors.newFixedThreadPool(500);
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < threadCount; i++) {
-            producerThreads.execute(new MessageProducer(messageCount));
+        DatabaseEnum database = (DatabaseEnum) request.getSession().getAttribute("database");
+        database = database == null ? DatabaseEnum.MYSQL : database;
+        DatabaseOperations operations = null;
+        if (database == DatabaseEnum.MYSQL) {
+            operations = new MySqlDatabaseOperations();
+        } else if (database == DatabaseEnum.MONGODB) {
+            operations = new MongoDBOperations();
+        } else if (database == DatabaseEnum.SQL) {
+            operations = new SqlDatabaseOperations();
         }
-
-        producerThreads.shutdown();
-
-        while (!producerThreads.isTerminated()) {
-        }
-        long endTime = System.currentTimeMillis();
-        String successMessage = "Finished all producer threads in : " + (endTime - startTime)
-                + " milliseconds";
-        System.out.println(successMessage);
-        request.setAttribute("successMessage", successMessage);
+        List<Customer> customerDetails = operations.getCustomers();
+        request.setAttribute("customerDetails", customerDetails);
         getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
     }
-
 }

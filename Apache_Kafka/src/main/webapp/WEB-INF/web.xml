@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.4">
   <servlet>
     <servlet-name>MessageProducerServlet</servlet-name>
-    <servlet-class>com.nihilent.servlet.MessageProducerServlet</servlet-class>
+    <servlet-class>com.mycompany.servlet.MessageProducerServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MessageProducerServlet</servlet-name>
@@ -10,7 +10,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>MessageConsumerServlet</servlet-name>
-    <servlet-class>com.nihilent.servlet.MessageConsumerServlet</servlet-class>
+    <servlet-class>com.mycompany.servlet.MessageConsumerServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
@@ -19,7 +19,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>MessageReaderServlet</servlet-name>
-    <servlet-class>com.nihilent.servlet.MessageReaderServlet</servlet-class>
+    <servlet-class>com.mycompany.servlet.MessageReaderServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MessageReaderServlet</servlet-name>

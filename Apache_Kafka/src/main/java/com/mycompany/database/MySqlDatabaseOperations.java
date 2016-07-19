@@ -1,4 +1,4 @@
-package com.nihilent.database;
+package com.mycompany.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nihilent.entity.Customer;
+import com.mycompany.entity.Customer;
 
 public class MySqlDatabaseOperations implements DatabaseOperations {
 

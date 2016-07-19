@@ -1,8 +1,8 @@
-package com.nihilent.database;
+package com.mycompany.database;
 
 import java.util.List;
 
-import com.nihilent.entity.Customer;
+import com.mycompany.entity.Customer;
 
 public interface DatabaseOperations {
 

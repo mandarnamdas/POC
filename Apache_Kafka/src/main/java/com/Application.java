@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.nihilent.consumer.MessageConsumer;
-import com.nihilent.producer.MessageProducer;
+import com.mycompany.consumer.MessageConsumer;
+import com.mycompany.producer.MessageProducer;
 
 public class Application {
 

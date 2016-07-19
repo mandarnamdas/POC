@@ -1,31 +1,27 @@
-package com.nihilent.servlet;
+package com.mycompany.servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.DatabaseEnum;
-import com.nihilent.database.DatabaseOperations;
-import com.nihilent.database.MongoDBOperations;
-import com.nihilent.database.MySqlDatabaseOperations;
-import com.nihilent.database.SqlDatabaseOperations;
-import com.nihilent.entity.Customer;
+import com.mycompany.producer.MessageProducer;
 
 /**
  * Servlet implementation class MessageConsumerServlet
  */
-public class MessageReaderServlet extends HttpServlet {
+public class MessageProducerServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor.
      */
-    public MessageReaderServlet() {
+    public MessageProducerServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -45,18 +41,26 @@ public class MessageReaderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("In Post");
-        DatabaseEnum database = (DatabaseEnum) request.getSession().getAttribute("database");
-        database = database == null ? DatabaseEnum.MYSQL : database;
-        DatabaseOperations operations = null;
-        if (database == DatabaseEnum.MYSQL) {
-            operations = new MySqlDatabaseOperations();
-        } else if (database == DatabaseEnum.MONGODB) {
-            operations = new MongoDBOperations();
-        } else if (database == DatabaseEnum.SQL) {
-            operations = new SqlDatabaseOperations();
+        // reading the user input
+        Integer threadCount = Integer.parseInt(request.getParameter("threadCount"));
+        Integer messageCount = Integer.parseInt(request.getParameter("messageCount"));
+        ExecutorService producerThreads = Executors.newFixedThreadPool(500);
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < threadCount; i++) {
+            producerThreads.execute(new MessageProducer(messageCount));
         }
-        List<Customer> customerDetails = operations.getCustomers();
-        request.setAttribute("customerDetails", customerDetails);
+
+        producerThreads.shutdown();
+
+        while (!producerThreads.isTerminated()) {
+        }
+        long endTime = System.currentTimeMillis();
+        String successMessage = "Finished all producer threads in : " + (endTime - startTime)
+                + " milliseconds";
+        System.out.println(successMessage);
+        request.setAttribute("successMessage", successMessage);
         getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
     }
+
 }

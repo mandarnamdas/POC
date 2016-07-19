@@ -1,4 +1,4 @@
-package com.nihilent.entity;
+package com.mycompany.entity;
 
 import java.io.Serializable;
 
